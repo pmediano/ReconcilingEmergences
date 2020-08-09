@@ -17,15 +17,16 @@ Basic theory
 ------------
 
 The paper provides a mathematical account of emergence in complex dynamical
-systems. In a nutshell, macroscopic feature `V` of a multivariate system `X` is
-said to be _causally emergent_ if it contains some information about the future
-of `X` that no microscopic element of `X` has on its own. Furthermore, it is
-possible to distinguish between two kinds of emergence: downward causation
-(when macroscopic features have an effect on microscopic elements), and causal
-decoupling (when macroscopic features have an effect on other macroscopic
-features). These intuitions are formulated rigorously using the [Partial
-Information Decomposition](https://arxiv.org/abs/1004.2515) and the [Integrated
-Information Decomposition](https://arxiv.org/abs/1909.02297) frameworks.
+systems. In a nutshell, a macroscopic feature `V` of a multivariate system `X`
+is said to be _causally emergent_ if it contains some information about the
+future of `X` that no microscopic element of `X` has on its own. Furthermore,
+it is possible to distinguish between two kinds of emergence: downward
+causation (when macroscopic features have an effect on microscopic elements),
+and causal decoupling (when macroscopic features have an effect on other
+macroscopic features). These intuitions are formulated rigorously using the
+[Partial Information Decomposition](https://arxiv.org/abs/1004.2515) and the
+[Integrated Information Decomposition](https://arxiv.org/abs/1909.02297)
+frameworks.
 
 Unfortunately, information decomposition is in general difficult and
 computationally expensive (for now). Fortunately, the theory also provides a
@@ -86,7 +87,7 @@ Download and installation
 -------------------------
 
 None, really. Just download this folder (with Github's zip download or with
-`git clone`, add it to your Octave/Matlab path, and enjoy.
+`git clone`), add it to your Octave/Matlab path, and enjoy.
 
 Tests are provided in the `tests/` subfolder. To run them, run
 `runtests('tests/')` from this repository's root folder.
