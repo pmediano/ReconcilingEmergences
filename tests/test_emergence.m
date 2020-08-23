@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Unit tests for mutual information functions. Can be run from the repository's
+% Unit tests for causal emergence functions. Can be run from the repository's
 % root folder with runtests('tests/').
 %
 % Note: these tests are stochastic, so if any of them fails try running them
