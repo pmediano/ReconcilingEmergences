@@ -90,7 +90,11 @@ Download and installation
 None, really. Just download this folder (with Github's zip download or with
 `git clone`), add it to your Octave/Matlab path, and enjoy.
 
-Tests are provided in the `tests/` subfolder. To run them, run
+Note, however, that if you use Octave you will need to install the `statistics`
+package. You can do this simply by running `pkg install -forge io statistics`
+(and remember to run `pkg load statistics` every time you start a new session).
+
+Tests are provided in the `tests/` subfolder. To run them in Matlab, run
 `runtests('tests/')` from this repository's root folder.
 
 
