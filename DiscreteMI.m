@@ -14,11 +14,11 @@ end
 %% Compute marginal entropies
 H_fun = @(p, tol) -sum(p(p > tol).*log2(p(p > tol)));
 
-sX = grp2idx(X);
+[~,~,sX] = unique(X, 'rows');
 tx = tabulate(sX);
 Hx = H_fun(tx(:,3)/100, 1e-8);
 
-sY = grp2idx(Y);
+[~, ~, sY] = unique(Y, 'rows');
 ty = tabulate(sY);
 Hy = H_fun(ty(:,3)/100, 1e-8);
 
