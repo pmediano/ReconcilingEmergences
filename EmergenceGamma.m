@@ -31,7 +31,12 @@ if nargin < 3 || isempty(tau)
   tau = 1;
 end
 if nargin < 4 || isempty(method)
-  if iscategorical(X) || (sum(abs(X(:) - round(X(:)))) + sum(abs(V - round(V)))) < 1e-10
+  if exist('OCTAVE_VERSION', 'builtin')
+    isdiscrete =  (sum(abs(X(:) - round(X(:)))) + sum(abs(V - round(V)))) < 1e-10;
+  else
+    isdiscrete =  iscategorical(X) || (sum(abs(X(:) - round(X(:)))) + sum(abs(V - round(V)))) < 1e-10;
+  end
+  if isdiscrete
     method = 'discrete';
   else
     method = 'gaussian';
