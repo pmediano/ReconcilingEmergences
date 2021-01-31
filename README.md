@@ -7,7 +7,8 @@ for the paper:
 
 Rosas\*, Mediano\*, et al. (2020). _Reconciling emergences: An
 information-theoretic approach to identify causal emergence in multivariate
-data_. [arXiv:2004.08220](https://arxiv.org/abs/2004.08220)
+data_. PLoS Computational Biology, 16(12): e1008289. DOI:
+[10.1371/journal.pcbi.1008289](https://doi.org/10.1371/journal.pcbi.1008289)
 
 Please cite the paper (and give us a shout!) if you use this software. Please
 contact Pedro Mediano for bug reports, pull requests, and feature requests.
