@@ -98,6 +98,23 @@ Tests are provided in the `tests/` subfolder. To run them in Matlab, run
 `runtests('tests/')` from this repository's root folder.
 
 
+Use in Python
+-------------
+
+All functions in this repository are Octave-friendly, which means they can be
+easily called from Python through the wholesome
+[oct2py](https://oct2py.readthedocs.io/) package. With a functional Octave and
+Python installation, you can simply run (from the root folder of the repo):
+
+```python
+import numpy.random as rn
+from oct2py import Oct2Py
+
+oc = Oct2Py()
+oc.EmergencePsi(rn.randn(100,2), rn.randn(100,1))
+```
+
+
 Licence
 -------
 
