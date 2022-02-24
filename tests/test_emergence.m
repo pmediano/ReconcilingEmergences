@@ -31,6 +31,12 @@ assert(abs(psi) < 0.01);
 assert(abs(v_mi) < 0.01);
 assert(abs(x_mi) < 0.01);
 
+% Test multivariate macro
+V = randn([size(V,1), 2]);
+assert(EmergencePsi(X, V)   < 0.01);
+assert(EmergenceDelta(X, V) < 0.01);
+assert(EmergenceGamma(X, V) < 0.01);
+
 
 %% Test with discrete downward causation example
 T = 50000;
@@ -51,6 +57,13 @@ assert(abs(delta - 1) < 0.01);
 assert(all(abs(v_mi - x_mi - [1,0]) < 0.01));
 
 assert(abs(EmergenceGamma(X, V) - 1) < 0.01);
+
+% Test multivariate macro
+X = randi(2, [T, 2]);
+V = randi(2, [T, 2]);
+assert(EmergencePsi(X, V)   < 0.01);
+assert(EmergenceDelta(X, V) < 0.01);
+assert(EmergenceGamma(X, V) < 0.01);
 
 
 %% Test with discrete causal decoupling example
