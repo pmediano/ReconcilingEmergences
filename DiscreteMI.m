@@ -6,8 +6,8 @@ function [ mi ] = DiscreteMI(X, Y)
 % Pedro Mediano and Fernando Rosas, Aug 2020
 
 %% Parameter checks
-if ~(isvector(X) && isvector(Y) && length(X) == length(Y))
-  error("X and Y must be vectors of the same length.");
+if ~(ismatrix(X) && ismatrix(Y) && size(X,1) == size(Y,1))
+  error("X and Y must be matrices of the same height.");
 end
 
 
