@@ -37,6 +37,12 @@ for p=p_vec
   assert(abs(DiscreteMI(X, Y) - true_MI) < 0.01);
 end
 
+% Test multivariate caculations
+X = randi(2, [10000,2]);
+Y = randi(2, [10000,2]);
+assert(DiscreteMI(X, X) > (1.99));
+assert(abs(DiscreteMI(X, Y)) < 0.01);
+
 
 %% Gaussian mutual information
 % Test that MI between independent variables is close to zero
@@ -51,4 +57,11 @@ for rho=rho_vec
   true_MI = -0.5*log(1 - rho*rho);
   assert(abs(GaussianMI(X(:,1), X(:,2)) - true_MI) < 0.01);
 end
+
+% Test with multivariate X,Y, sampling covariance matrix from Wishart
+u = randn([10,5]);
+S = u'*u;
+Z = mvnrnd(zeros([1,5]), S, 100000);
+true_MI = 0.5*(log(det(S(1:3,1:3))) + log(det(S(4:5,4:5))) - log(det(S)));
+assert(abs(GaussianMI(Z(:,1:3), Z(:,4:5)) - true_MI) < 0.01);
 
