@@ -44,7 +44,7 @@ details.
 
 Finally, note that for the assumptions of the theory to hold, the candidate
 emergent feature V has to be a _supervenient_ feature of X -- in other words,
-`V(t)` has to be a (possibly stochastic) function of `X(t,:)`, and nothing
+`V(t,:)` has to be a (possibly stochastic) function of `X(t,:)`, and nothing
 else.
 
 
@@ -77,7 +77,7 @@ time shuffling. Assuming that `T = size(X,1)` and that `nb_surr` is a
 large(-ish) integer, this can be done by:
 
 ```octave
-surr_psi = arrayfun(@(j) EmergencePsi(X(randperm(T),:), V(randperm(T))), 1:nb_surr);
+surr_psi = arrayfun(@(j) EmergencePsi(X(randperm(T),:), V(randperm(T),:)), 1:nb_surr);
 ```
 
 With this, the bias-corrected Ψ is `psi - mean(surr_psi)` and its standard
