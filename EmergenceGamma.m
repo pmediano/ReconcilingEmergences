@@ -3,8 +3,10 @@ function [ gamma ] = EmergenceGamma(X, V, tau, method)
 %
 %     GAMMA = EMERGENCEGAMMA(X, V) computes the causal decoupling criterion
 %     gamma for the system with micro time series X and macro time series Y.
-%     Micro data must be of size TxD and macro data of size Tx1. Note that for
-%     the theory to hold V has to be a (possibly stochastic) function of X.
+%     Micro data must be of size TxD and macro data of size TxR, where T is the
+%     length of the time series and D,R the dimensions of X,V respectively.
+%     Note that for the theory to hold V has to be a (possibly stochastic)
+%     function of X.
 %
 %     GAMMA = EMERGENCEGAMMA(X, V, TAU) uses a time delay of TAU samples to
 %     compute time-delayed mutual information. (default: 1)
@@ -21,20 +23,20 @@ function [ gamma ] = EmergenceGamma(X, V, tau, method)
 % Pedro Mediano and Fernando Rosas, Aug 2020
 
 %% Parameter checks and initialisation
-if ~isvector(V) || ~ismatrix(X)
-  error("X has to be a 2D matrix and V a 1D vector.");
+if ~ismatrix(V) || ~ismatrix(X)
+  error("X and V have to be 2D matrices.");
 end
-if length(V) ~= size(X,1)
-  error("X and V must have the same length.");
+if size(V,1) ~= size(X,1)
+  error("X and V must have the same height.");
 end
 if nargin < 3 || isempty(tau)
   tau = 1;
 end
 if nargin < 4 || isempty(method)
   if exist('OCTAVE_VERSION', 'builtin')
-    isdiscrete =  (sum(abs(X(:) - round(X(:)))) + sum(abs(V - round(V)))) < 1e-10;
+    isdiscrete =  (sum(abs(X(:) - round(X(:)))) + sum(abs(V(:) - round(V(:))))) < 1e-10;
   else
-    isdiscrete =  iscategorical(X) || (sum(abs(X(:) - round(X(:)))) + sum(abs(V - round(V)))) < 1e-10;
+    isdiscrete =  iscategorical(X) || (sum(abs(X(:) - round(X(:)))) + sum(abs(V(:) - round(V(:))))) < 1e-10;
   end
   if isdiscrete
     method = 'discrete';
@@ -53,5 +55,5 @@ end
 
 
 %% Compute mutual infos and gamma
-gamma = max(arrayfun(@(j) MI_fun(V(1:end-tau), X(1+tau:end,j)), 1:size(X,2)));
+gamma = max(arrayfun(@(j) MI_fun(V(1:end-tau,:), X(1+tau:end,j)), 1:size(X,2)));
 
